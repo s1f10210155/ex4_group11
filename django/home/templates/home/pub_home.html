@@ -16,5 +16,33 @@
         <a href="{% url 'pub_home' %}">public home</a>
         <a href="{% url 'priv_home' %}">private home</a>
         <a href="{% url 'search' %}">room search</a>
+        <br>
+        <a href="{% url 'create_room' %}">create room</a>
+        <br>
+
+        {% for thread in threads %}
+        <div>
+            <table>
+                <tr>
+                    <td>{{ thread.username }}</td>
+                    <td>{{ thread.created_datetime }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ thread.title }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ thread.content | linebreaks | urlize }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form }}</td>
+                </tr>
+                <!--
+                <tr>
+                    <td colspan="2"><a href="{% url 'home:display_comments' thread.id %}">open thread</a></td>
+                </tr>
+                -->
+            </table>
+        </div>
+        {% endfor %}
     </body>
 </html>
