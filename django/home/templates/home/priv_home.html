@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Priv home</title>
+    </head>
+    <body>
+        <h1>Private Home</h1>
+        <p>Hi {{ user.username}}! u r logged in.</p>
+        <a href="{% url 'logout' %}">logout</a>
+        <br>
+        <a href="{% url 'pub_home' %}">public home</a>
+        <a href="{% url 'priv_home' %}">private home</a>
+        <a href="{% url 'search' %}">room search</a>
+    </body>
+</html>

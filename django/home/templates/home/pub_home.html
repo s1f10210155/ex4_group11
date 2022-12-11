@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Pub home</title>
+    </head>
+    <body>
+        <h1>Public Home</h1>
+        {% if user.is_authenticated %}
+        <p>Hi {{ user.username}}! u r logged in.</p>
+        <a href="{% url 'logout' %}">logout</a><br>
+        {% else %}
+        <p>u r not logged in.</p>
+        <p><a href="{% url 'login' %}">login</a></p>
+        {% endif %}
+        <a href="{% url 'pub_home' %}">public home</a>
+        <a href="{% url 'priv_home' %}">private home</a>
+        <a href="{% url 'search' %}">room search</a>
+    </body>
+</html>
