@@ -8,4 +8,5 @@ urlpatterns = [
     path("priv_home", views.priv_home, name="priv_home"),
     path("search", views.search, name="search"),
     path("create_room", views.create_room, name="create_room"),
+    path("<int:user_id>", views.users, name="users"),
 ]

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Thread
@@ -32,3 +32,10 @@ def create_room(request):
         thread.user = request.user
         thread.save()
     return render(request, "home/create_room.html", context)
+
+def users(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    context = {
+        'user':user,
+    }
+    return render(request, 'app/user.html', context)
