@@ -1,0 +1,39 @@
+{% extends "home/pub_home" %}
+{% block content %}
+{% load widget_tweaks %}
+{% for thread in threads %}
+
+<div>
+    <table>
+        <tr>
+            <td>{{ thread.username }}</td>
+            <td>{{ thread.created_datetime }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{ thread.title }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{ thread.content | linebreaks | urlize }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><a href="{% url 'home:display_comments' thread.id %}">read more</a></td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+
+<div>
+
+    {% if threads.has_previous %}
+        <a href="?current_page={{ threads.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <span>
+        {{ threads.number }} / {{ threads.paginator.num_pages }}
+    </span>
+
+    {% if threads.has_next %}
+        <a href="?current_page={{ threads.next_page_number }}">Next</a>
+    {% endif %}
+</div>
+{% endblock %}

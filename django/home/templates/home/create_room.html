@@ -9,11 +9,11 @@
         <a href="{% url 'pub_home' %}">return to home</a>
         <br>
 
-        <form method="post" action="{% url 'create_room' %}">{% csrf_token %}
+        <form method="post" action="{% url 'create_thread' %}">{% csrf_token %}
             <div>
                 <table>
                     <tr>
-                        <td>{{  user.username }}</td>
+                        <td>{{ user.username }}</td>
                     </tr>
                     <tr>
                         <td>{{ form.title }}</td>
@@ -22,10 +22,10 @@
                         <td>{{ form.content }}</td>
                     </tr>
                     <tr>
-                        <td><button type="submit">create</button></td>
+                        <td><button type="submit" class="positive_button">create</button></td>
                     </tr>
                 </table>
-            </div>
+            <div>
         </form>
     </body>
 </html>

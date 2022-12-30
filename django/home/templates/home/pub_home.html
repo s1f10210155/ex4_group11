@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,30 +20,8 @@
         <br>
         <a href="{% url 'create_room' %}">create room</a>
         <br>
-
-        {% for thread in threads %}
         <div>
-            <table>
-                <tr>
-                    <td>{{ thread.username }}</td>
-                    <td>{{ thread.created_datetime }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">{{ thread.title }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">{{ thread.content | linebreaks | urlize }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form }}</td>
-                </tr>
-                <!--
-                <tr>
-                    <td colspan="2"><a href="{% url 'home:display_comments' thread.id %}">open thread</a></td>
-                </tr>
-                -->
-            </table>
+        {% block content %}{% endblock %}
         </div>
-        {% endfor %}
     </body>
 </html>

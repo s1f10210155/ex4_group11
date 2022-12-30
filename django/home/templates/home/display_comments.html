@@ -1,0 +1,42 @@
+{% extends 'home/pub_home.html' %}
+{% block content %}
+{% load widget_tweaks %}
+<table>
+    <tr>
+        <td>{{ thread.username }}</td>
+        <td>{{ thread.created_datetime }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ thread.title }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ thread.content | linebreaks | urlize }}</td>
+    </tr>
+</table>
+{% for comment in comments %}
+<table>
+    <tr>
+        <td>{{ comment.username }}</td>
+        <td>{{ comment.created_datetime }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ comment.comment | linebreaks | urlize }}</td>
+    </tr>
+</table>
+{% endfor %}
+
+<form method="post" action="{% url 'home:create_comment' %}">{% csrf_token %}
+    <input type="hidden" value="{{ thread.id }}" name="thread_id">
+    <table>
+        <tr>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.comment | add_class:"form_content" }}</td>
+        </tr>
+        <tr>
+            <td><button type="submit" class="positive_button">create</button></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
