@@ -29,7 +29,11 @@ def display_threads(request):
 
 @login_required
 def create_room(request):
-    return render(request, "home/create_room.html")
+    form = ThreadForm
+    context = {
+        "form": form,
+    }
+    return render(request, "home/create_room.html", context)
 
 @login_required
 def create_thread(request):
@@ -38,7 +42,7 @@ def create_thread(request):
         thread = form.save(commit=False)
         thread.user = request.user
         thread.save()
-    return redirect("home:display_threads")
+    return redirect("pub_home")
 
 @login_required
 def display_comments(request, thread_id):

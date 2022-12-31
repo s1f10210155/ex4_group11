@@ -20,8 +20,9 @@
         <br>
         <a href="{% url 'create_room' %}">create room</a>
         <br>
-        <div>
-        {% block content %}{% endblock %}
+        <div class="container">
+        {% block pub_thread %}
+        {% endblock %}
         </div>
     </body>
 </html>

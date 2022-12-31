@@ -1,5 +1,6 @@
-{% extends "home/pub_home" %}
-{% block content %}
+{% extends "home/pub_home.html" %}
+
+{% block pub_thread %}
 {% load widget_tweaks %}
 {% for thread in threads %}
 
@@ -16,7 +17,7 @@
             <td colspan="2">{{ thread.content | linebreaks | urlize }}</td>
         </tr>
         <tr>
-            <td colspan="2"><a href="{% url 'home:display_comments' thread.id %}">read more</a></td>
+            <td colspan="2"><a href="{% url 'display_comments' thread.id %}">read more</a></td>
         </tr>
     </table>
 </div>
