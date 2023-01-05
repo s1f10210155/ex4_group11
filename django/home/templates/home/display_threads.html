@@ -27,7 +27,7 @@
 
     {% if threads.has_previous %}
         <a href="?current_page={{ threads.previous_page_number }}">Previous</a>
-    {% endif %}
+    {% endif %}_
 
     <span>
         {{ threads.number }} / {{ threads.paginator.num_pages }}

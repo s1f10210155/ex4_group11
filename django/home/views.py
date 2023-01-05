@@ -81,7 +81,7 @@ def create_comment(request):
         comment.thread_id = thread_id
 
         comment.save()
-    return redirect('home:display_comments', thread_id = thread_id)
+    return redirect('display_comments', thread_id = thread_id)
 
 @login_required
 def priv_home(request):

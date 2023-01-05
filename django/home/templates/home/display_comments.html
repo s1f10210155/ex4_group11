@@ -1,5 +1,5 @@
 {% extends 'home/pub_home.html' %}
-{% block content %}
+{% block pub_thread %}
 {% load widget_tweaks %}
 <table>
     <tr>
@@ -25,7 +25,7 @@
 </table>
 {% endfor %}
 
-<form method="post" action="{% url 'home:create_comment' %}">{% csrf_token %}
+<form method="post" action="{% url 'create_comment' %}">{% csrf_token %}
     <input type="hidden" value="{{ thread.id }}" name="thread_id">
     <table>
         <tr>
