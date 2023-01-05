@@ -6,6 +6,7 @@
         <title>Pub home</title>
     </head>
     <body>
+        <header>
         <h1>Public Home</h1>
         {% if user.is_authenticated %}
         <p>Hi {{ user.username}}! u r logged in.</p>
@@ -20,6 +21,7 @@
         <br>
         <a href="{% url 'create_room' %}">create room</a>
         <br>
+        </header>
         <div class="container">
         {% block pub_thread %}
         {% endblock %}
