@@ -1,6 +1,10 @@
 from django.forms import ModelForm
-from .models import Thread
-from .models import Comment
+from .models import Thread, Comment, Room
+
+class RoomForm(ModelForm):
+    class Meta:
+        model = Room
+        fields = ("title", "content")
 
 class ThreadForm(ModelForm):
     class Meta:

@@ -1,0 +1,41 @@
+{% extends "home/pub_home.html" %}
+
+{% block pub_thread %}
+{% load widget_tweaks %}
+{% for room in rooms %}
+
+<div>
+    <table>
+        <tr>
+            <td>{{ room.username }}</td>
+            <td>{{ room.created_datetime }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{ room.title }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{ room.content | linebreaks | urlize }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><a href="{% url 'display_threads' room.id %}">read more</a></td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+
+
+<div>
+
+    {% if rooms.has_previous %}
+        <a href="?current_page={{ rooms.previous_page_number }}">Previous</a>
+    {% endif %}_
+
+    <span>
+        {{ rooms.number }} / {{ rooms.paginator.num_pages }}
+    </span>
+
+    {% if rooms.has_next %}
+        <a href="?current_page={{ rooms.next_page_number }}">Next</a>
+    {% endif %}
+</div>
+{% endblock %}

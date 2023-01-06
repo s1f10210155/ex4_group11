@@ -23,6 +23,26 @@
 </div>
 {% endfor %}
 
+<form method="post" action="{% url 'create_thread' %}">{% csrf_token %}
+    <input type="hidden" value="{{ room.id }}" name="room_id">
+
+        <table>
+            <tr>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.title }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.content }}</td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="positive_button">create</button></td>
+            </tr>
+        </table>
+
+</form>
+
 <div>
 
     {% if threads.has_previous %}
