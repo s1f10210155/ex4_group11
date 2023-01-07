@@ -18,7 +18,7 @@ def create_room_page(request):
     return render(request, "home/create_room_page.html", context)
 
 def display_rooms(request):
-    rooms = Room.objects.all().values()
+    rooms = Room.objects.all().values().order_by("-created_datetime")
     count = len(rooms)
     for count in range(count):
         username_dicts = User.objects.filter(pk=rooms[count]["user_id"]).values("username")
@@ -48,7 +48,7 @@ def display_threads(request, room_id):
     rooms = Room.objects.filter(pk=room_id).values()
     room  = rooms[0]
 
-    threads = Thread.objects.filter(room_id=room_id).values()
+    threads = Thread.objects.filter(room_id=room_id).values().order_by("-created_datetime")
     count = len(threads)
     for count in range(count):
         username_dicts = User.objects.filter(pk=threads[count]["user_id"]).values("username")
