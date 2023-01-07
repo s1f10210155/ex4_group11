@@ -84,7 +84,7 @@ def create_thread(request):
 
 @login_required
 def display_comments(request, thread_id):
-
+    
     threads = Thread.objects.filter(pk=thread_id).values()
     thread  = threads[0]
     username_dicts = User.objects.filter(pk=threads[0]['user_id']).values('username')
