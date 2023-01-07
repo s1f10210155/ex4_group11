@@ -6,6 +6,8 @@ from .forms import ThreadForm, CommentForm, RoomForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import Q
+from functools import reduce
+from operator import and_
 
 # Create your views here.
 def pub_home(request):
@@ -119,14 +121,24 @@ def create_comment(request):
 def priv_home(request):
     return render(request, "home/priv_home.html")
 
+#参考：https://zerofromlight.com/blogs/detail/59/#_4
 @login_required
 def search(request):
     room = Room.objects.order_by("-id")
     keyword = request.GET.get("keyword")
     if keyword:
-        room = room.filter(
-            Q(title__icontains=keyword)
-        )
+        exclusion_list = set([' ', '　'])
+        q_list = ''
+
+        for i in keyword:
+            if i in exclusion_list:
+                pass
+            else:
+                q_list += i
+        
+        query = reduce(and_, [Q(title__icontains=q) | Q(content__icontains=q) for q in q_list])
+
+        room = room.filter(query)
         messages.success(request, "「{}」の検索結果".format(keyword))
     
     return render(request, "home/search_result.html", {"room": room})
