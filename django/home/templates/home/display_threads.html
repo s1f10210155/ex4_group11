@@ -24,7 +24,7 @@
 {% endfor %}
 
 <form method="post" action="{% url 'create_thread' %}">{% csrf_token %}
-    <input type="hidden" value="{{ room.id }}" name="room_id">
+        <input type="hidden" value="{{ room.id }}" name="room_id">
 
         <table>
             <tr>

@@ -45,7 +45,10 @@ def create_room(request):
     return redirect("pub_home")
 
 def display_threads(request, room_id):
-    threads = Thread.objects.filter(pk=room_id).values()
+    rooms = Room.objects.filter(pk=room_id).values()
+    room  = rooms[0]
+
+    threads = Thread.objects.filter(room_id=room_id).values()
     count = len(threads)
     for count in range(count):
         username_dicts = User.objects.filter(pk=threads[count]["user_id"]).values("username")
@@ -57,6 +60,7 @@ def display_threads(request, room_id):
     current_page = request.GET.get("current_page")
     threads = paginator.get_page(current_page)
     context = {
+        "room": room,
         "threads": threads,
         "form": form,
     }
@@ -67,10 +71,10 @@ def create_thread(request):
     room_id = request.POST['room_id']
     form = ThreadForm(request.POST)
     if form.is_valid():
-        thread = form.save(commit=False)
-        thread.user = request.user
-        thread.room_id = room_id
-        thread.save()
+        newthread = form.save(commit=False)
+        newthread.user = request.user
+        newthread.room_id = room_id
+        newthread.save()
     return redirect('display_threads', room_id = room_id)
 
 @login_required

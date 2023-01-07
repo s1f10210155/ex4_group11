@@ -15,7 +15,7 @@ class Thread(models.Model):
     title = models.CharField(blank=False, null=False, max_length=150)
     content = models.TextField(blank=False, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, null=False)
     created_datetime = models.DateTimeField(auto_now_add=True)
     updated_datetime = models.DateTimeField(auto_now=True)
     def __str__(self):
