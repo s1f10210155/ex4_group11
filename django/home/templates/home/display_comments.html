@@ -1,6 +1,9 @@
 {% extends 'home/pub_home.html' %}
 {% block pub_thread %}
 {% load widget_tweaks %}
+<p>ここのページはコメント</p><br>
+<a href="{{request.META.HTTP_REFERER}}">戻る</a>
+
 <table>
     <tr>
         <td>{{ thread.username }}</td>
