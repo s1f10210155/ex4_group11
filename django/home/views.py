@@ -125,7 +125,7 @@ def search(request):
     keyword = request.GET.get("keyword")
     if keyword:
         room = room.filter(
-            Q(title__iconteins=keyword)
+            Q(title__icontains=keyword)
         )
         messages.success(request, "「{}」の検索結果".format(keyword))
     
