@@ -14,5 +14,14 @@
         <a href="{% url 'search' %}">room search</a>
         <br>
         <a href="{% url 'create_room' %}">create room</a>
+
+        <form method="GET" action="{% url 'search' %}">
+            <input type="text" name="keyword">
+            <button type="submit">検索</button>
+        </form>
+        <div>
+            {% block search %}
+            {% endblock %}
+        </div>
     </body>
 </html>

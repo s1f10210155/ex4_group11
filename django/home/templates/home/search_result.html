@@ -1,0 +1,17 @@
+{% extends "home/search.html" %}
+
+{% block search %}
+
+<h1>room一覧</h1><br>
+
+{% for room in room %}
+    <ul>
+        <li>
+            {{ room.title }}
+            {{ room.content }}
+            <a href="{% url 'display_threads' room.id %}">read more</a>
+        </li>
+    </ul>
+{% endfor %}
+
+{% endblock %}

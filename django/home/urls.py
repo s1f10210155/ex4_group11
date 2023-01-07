@@ -14,6 +14,7 @@ urlpatterns = [
     path("create_thread/", views.create_thread, name="create_thread"),
     path("create_comment/", views.create_comment, name="create_comment"),
 
-    path("priv_home", views.priv_home, name="priv_home"),
-    path("search", views.search, name="search"),
+    path("priv_home/", views.priv_home, name="priv_home"),
+
+    path("search/", views.search, name="search"),
 ]

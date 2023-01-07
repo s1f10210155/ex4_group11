@@ -4,6 +4,8 @@ from django.core.paginator import Paginator
 from .models import Thread, Comment, Room
 from .forms import ThreadForm, CommentForm, RoomForm
 from django.contrib.auth.models import User
+from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 def pub_home(request):
@@ -44,6 +46,7 @@ def create_room(request):
         room.save()
     return redirect("pub_home")
 
+@login_required
 def display_threads(request, room_id):
     rooms = Room.objects.filter(pk=room_id).values()
     room  = rooms[0]
@@ -118,4 +121,12 @@ def priv_home(request):
 
 @login_required
 def search(request):
-    return render(request, "home/search.html")
+    room = Room.objects.order_by("-id")
+    keyword = request.GET.get("keyword")
+    if keyword:
+        room = room.filter(
+            Q(title__iconteins=keyword)
+        )
+        messages.success(request, "「{}」の検索結果".format(keyword))
+    
+    return render(request, "home/search_result.html", {"room": room})
