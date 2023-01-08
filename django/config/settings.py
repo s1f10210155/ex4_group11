@@ -133,3 +133,5 @@ ASGI_APPLICATION = "config.asgi.application"
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'pub_home'
 LOGOUT_REDIRECT_URL = 'pub_home'
+
+AUTH_USER_MODEL = 'home.CustomUser'

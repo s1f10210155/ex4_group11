@@ -10,6 +10,11 @@
             {{ room.title }}
             {{ room.content }}
             <a href="{% url 'display_threads' room.id %}">read more</a>
+
+            <form action="{% url 'follow' room.pk %}" method="post">
+                <button type="submit" name="button">お気に入り追加</button>
+                {% csrf_token %}
+            </form>
         </li>
     </ul>
 {% endfor %}

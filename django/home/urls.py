@@ -17,4 +17,6 @@ urlpatterns = [
     path("priv_home/", views.priv_home, name="priv_home"),
 
     path("search/", views.search, name="search"),
+
+    path('follow/<int:pk>/', views.followRoom, name='follow'),  
 ]

@@ -3,11 +3,14 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Thread, Comment, Room
 from .forms import ThreadForm, CommentForm, RoomForm
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 from django.contrib import messages
 from django.db.models import Q
 from functools import reduce
 from operator import and_
+from django.views import generic
 
 # Create your views here.
 def pub_home(request):
@@ -142,3 +145,10 @@ def search(request):
         messages.success(request, "「{}」の検索結果".format(keyword))
     
     return render(request, "home/search_result.html", {"room": room})
+
+
+#参考：https://qiita.com/checche/items/19bfd860770921427e29
+def followRoom(request, pk):
+    place = get_object_or_404(Room, pk=pk)
+    request.user.favorite_room.add(place)
+    return redirect('pub_home')
