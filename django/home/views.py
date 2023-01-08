@@ -148,7 +148,7 @@ def search(request):
 
 
 #参考：https://qiita.com/checche/items/19bfd860770921427e29
-def followRoom(request, pk):
-    place = get_object_or_404(Room, pk=pk)
+def followRoom(request, room_id):
+    place = get_object_or_404(Room, pk=room_id)
     request.user.favorite_room.add(place)
     return redirect('pub_home')
