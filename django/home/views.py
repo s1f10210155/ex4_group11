@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from .models import Thread, Comment, Room
+from .models import Thread, Comment, Room, CustomUser
 from .forms import ThreadForm, CommentForm, RoomForm
 #from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -25,7 +25,10 @@ def create_room_page(request):
     return render(request, "home/create_room_page.html", context)
 
 def display_rooms(request):
-    rooms = Room.objects.all().values().order_by("-created_datetime")
+    #ログインしているユーザーとidが一致したら,
+    # そのユーザーがお気に入り登録しているroom_idを取り出し
+    user = request.user.id
+    rooms = Room.objects.filter(customuser=user).values().order_by("-created_datetime")
     count = len(rooms)
     for count in range(count):
         username_dicts = User.objects.filter(pk=rooms[count]["user_id"]).values("username")
