@@ -16,10 +16,10 @@
                 <a href="{% url 'create_room_page' %}" class="ul1">create room</a>
                 {% if user.is_authenticated %}
                 <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
-                <a href="{% url 'logout' %}">logout</a>
+                <a href="{% url 'logout' %}" class="ul1">logout</a>
                 {% else %}
                 <!--<p>u r not logged in.</p>-->
-                <p><a href="{% url 'login' %}">login</a></p>
+                <a href="{% url 'login' %}" class="ul1">login</a>
                 {% endif %}
             </ul>
         </header>

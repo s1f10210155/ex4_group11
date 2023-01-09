@@ -3,18 +3,26 @@
     <head>
         <meta charset="utf-8"/>
         <title>Priv home</title>
+        <link rel="stylesheet" type="text/css" href="../../static/css/priv_home.css">
     </head>
     <body>
-        <h1>Private Home</h1>
-        <p>Hi {{ user.username}}! u r logged in.</p>
-        <a href="{% url 'logout' %}">logout</a>
-        <br>
-        <a href="{% url 'pub_home' %}">public home</a>
-        <a href="{% url 'priv_home' %}">private home</a>
-        <a href="{% url 'search' %}">room search</a>
-        <br>
-        <!--
-        <a href="{% url 'create_room' %}">create room</a>
-        -->
+        <header>
+            <h1>Private Home</h1>
+            <ul class="ul-header">
+                <a href="{% url 'pub_home' %}" class="ul1">public home</a>
+                <a href="{% url 'priv_home' %}" class="ul1">private home</a>
+                <a href="{% url 'search' %}" class="ul1">room search</a>
+                <a href="{% url 'create_room_page' %}" class="ul1">create room</a>
+                <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
+                <a href="{% url 'logout' %}" class="ul1">logout</a>
+            </ul>
+        </header>
+        <main>
+            <h2>スレッド一覧</h2>
+            <!--
+            <a href="{% url 'create_room' %}">create room</a>
+            --> 
+        </main>
+       
     </body>
 </html>
