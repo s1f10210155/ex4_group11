@@ -4,27 +4,31 @@
     <head>
         <meta charset="utf-8"/>
         <title>Pub home</title>
+        <link rel="stylesheet" type="text/css" href="../../static/css/pub_home.css">
     </head>
     <body>
         <header>
-        <h1>Public Home</h1>
-        {% if user.is_authenticated %}
-        <p>Hi {{ user.username}}! u r logged in.</p>
-        <a href="{% url 'logout' %}">logout</a><br>
-        {% else %}
-        <p>u r not logged in.</p>
-        <p><a href="{% url 'login' %}">login</a></p>
-        {% endif %}
-        <a href="{% url 'pub_home' %}">public home</a>
-        <a href="{% url 'priv_home' %}">private home</a>
-        <a href="{% url 'search' %}">room search</a>
-        <br>
-        <a href="{% url 'create_room_page' %}">create room</a>
-        <br>
+            <h1>Public Home</h1>
+            <ul class="ul-header">
+                <a href="{% url 'pub_home' %}" class="ul1">public home</a>
+                <a href="{% url 'priv_home' %}" class="ul1">private home</a>
+                <a href="{% url 'search' %}" class="ul1">room search</a>
+                <a href="{% url 'create_room_page' %}" class="ul1">create room</a>
+                {% if user.is_authenticated %}
+                <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
+                <a href="{% url 'logout' %}">logout</a>
+                {% else %}
+                <!--<p>u r not logged in.</p>-->
+                <p><a href="{% url 'login' %}">login</a></p>
+                {% endif %}
+            </ul>
         </header>
-        <div class="container">
-        {% block pub_thread %}
-        {% endblock %}
-        </div>
+        <main>
+            <h2>スレッド一覧</h2>
+            <div class="container">
+                {% block pub_thread %}
+                {% endblock %}
+            </div>
+        </main>
     </body>
 </html>
