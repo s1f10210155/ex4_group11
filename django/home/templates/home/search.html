@@ -3,30 +3,34 @@
     <head>
         <meta charset="utf-8"/>
         <title>Search home</title>
-        <link rel="stylesheet" type="text/css" href="../../static/css/serach.css">
+        <link rel="stylesheet" type="text/css" href="../../static/css/serach1.css">
     </head>
     <body>
         <header>
-            <h1>Search Home</h1>
+            <h1 id="header_h1">Search home</h1>
+            {% if user.is_authenticated %}
+            <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
+            <a href="{% url 'logout' %}" class="login_info">{{ user.username}}/logout</a>
+            {% else %}
+            <!--<p>u r not logged in.</p>-->
+            <a href="{% url 'login' %}" class="login_info">guest/login</a>
+            {% endif %}<br>
             <ul class="ul-header">
                 <a href="{% url 'pub_home' %}" class="ul1">public home</a>
                 <a href="{% url 'priv_home' %}" class="ul1">private home</a>
                 <a href="{% url 'search' %}" class="ul1">room search</a>
                 <a href="{% url 'create_room_page' %}" class="ul1">create room</a>
-                {% if user.is_authenticated %}
-                <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
-                <a href="{% url 'logout' %}" class="ul1">logout</a>
-                {% else %}
-                <!--<p>u r not logged in.</p>-->
-                <a href="{% url 'login' %}" class="ul1">login</a>
-                {% endif %}
             </ul>
         </header>
         <main>
-            <form method="GET" action="{% url 'search' %}">
-                <input type="text" name="keyword">
-                <button type="submit">検索</button>
-            </form>
+            <h2>検索ページ</h2>
+            <div id="serach">
+                <form method="GET" action="{% url 'search' %}">
+                    <input type="text" name="keyword">
+                    <button type="submit">検索</button>
+                </form>
+            </div>
+            <h1>room一覧</h1>
             <div>
                 {% block search %}
                 {% endblock %}

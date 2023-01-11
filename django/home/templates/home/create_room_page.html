@@ -3,30 +3,45 @@
     <head>
         <meta charset="utf-8"/>
         <title>create room page</title>
-        <link rel="stylesheet" type="text/css" href="../../static/css/create_room.css">
+        <link rel="stylesheet" type="text/css" href="../../static/css/create_room1.css">
     </head>
     <body>
-        <h1>Create Room</h1>
-        <a href="{% url 'pub_home' %}">return to home</a>
-        <br>
-
-        <form method="post" action="{% url 'create_room' %}">{% csrf_token %}
-            <div>
-                <table>
-                    <tr>
-                        <td>{{ user.username }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ form.title }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ form.content }}</td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit" class="positive_button">create</button></td>
-                    </tr>
-                </table>
-            <div>
-        </form>
+        <header>
+            <h1 id="header_h1">Create room page</h1>
+            {% if user.is_authenticated %}
+            <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
+            <a href="{% url 'logout' %}" class="login_info">{{ user.username}}/logout</a>
+            {% else %}
+            <!--<p>u r not logged in.</p>-->
+            <a href="{% url 'login' %}" class="login_info">guest/login</a>
+            {% endif %}<br>
+            <ul class="ul-header">
+                <a href="{% url 'pub_home' %}" class="ul1">public home</a>
+                <a href="{% url 'priv_home' %}" class="ul1">private home</a>
+                <a href="{% url 'search' %}" class="ul1">room search</a>
+                <a href="{% url 'create_room_page' %}" class="ul1">create room</a>
+            </ul>
+        </header>
+        <main>
+            <h2>スレッド作成</h2>
+            <form method="post" action="{% url 'create_room' %}">{% csrf_token %}
+                <div class="container">
+                    <table>
+                        <tr>
+                            <td>ユーザー名：{{ user.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>タイトル：{{ form.title }}</td>
+                        </tr>
+                        <tr>
+                            <td>本文<br>{{ form.content }}</td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit" class="positive_button">create</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </main>
     </body>
 </html>

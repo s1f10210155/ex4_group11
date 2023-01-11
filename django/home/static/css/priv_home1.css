@@ -19,13 +19,16 @@ header {
     margin: revert;
     font-size: 122%;
     font-weight: 700;
+    padding-top: 1%;
 }
 
 .ul1:hover{
     background-color: orange;
-    border-radius: 20px;
+    border-radius: 10px;
     transition-property: background-color;
     transition-duration: 0.8s;
+    border: solid 1px black;
+    padding: 2px;
 }
 
 a {
@@ -33,8 +36,21 @@ a {
     text-decoration: none;
 }
 
-h1{
-    text-align: center;
+#header_h1{
+    float: left;
+    padding-left: 5%;
+    margin-top: 25px;
+}
+
+.login_info{
+    float: right;
+    margin-right: 4%;
+    margin-top: 1%;
+    background-color: #d8d8d8;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 3px;
+    font-weight: 700;
 }
 
 /*<main>部分のcss*/
@@ -44,7 +60,7 @@ body{
 }
 
 h2{
-    margin: 170px 10% 20px 10%;
+    margin: 140px 10% 20px 10%;
     border-left: solid 5px #444d56;
     padding-left: 20px;
 }

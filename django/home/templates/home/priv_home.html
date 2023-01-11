@@ -1,20 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8"/>
         <title>Priv home</title>
-        <link rel="stylesheet" type="text/css" href="../../static/css/priv_home.css">
+        <link rel="stylesheet" type="text/css" href="../../static/css/priv_home1.css">
     </head>
     <body>
         <header>
-            <h1>Private Home</h1>
+            <h1 id="header_h1">Private Home</h1>
+            {% if user.is_authenticated %}
+            <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
+            <a href="{% url 'logout' %}" class="login_info">{{ user.username}}/logout</a>
+            {% else %}
+            <!--<p>u r not logged in.</p>-->
+            <a href="{% url 'login' %}" class="login_info">guest/login</a>
+            {% endif %}<br>
             <ul class="ul-header">
                 <a href="{% url 'pub_home' %}" class="ul1">public home</a>
                 <a href="{% url 'priv_home' %}" class="ul1">private home</a>
                 <a href="{% url 'search' %}" class="ul1">room search</a>
                 <a href="{% url 'create_room_page' %}" class="ul1">create room</a>
-                <!--<p>Hi {{ user.username}}! you are logged in.</p>-->
-                <a href="{% url 'logout' %}" class="ul1">logout</a>
             </ul>
         </header>
         <main>

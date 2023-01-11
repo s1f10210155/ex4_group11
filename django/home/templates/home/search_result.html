@@ -2,9 +2,10 @@
 
 {% block search %}
 
-<h1>room一覧</h1><br>
+<!--<h1>room一覧</h1><br>-->
 
 {% for room in room %}
+    <div class="container">
     <ul>
         <li>
             {{ room.title }}
@@ -12,6 +13,7 @@
             <a href="{% url 'display_threads' room.id %}">read more</a>
         </li>
     </ul>
+    </div>
 {% endfor %}
 
 {% endblock %}
