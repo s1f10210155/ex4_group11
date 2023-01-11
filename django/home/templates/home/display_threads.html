@@ -3,7 +3,7 @@
 {% block pub_thread %}
 {% load widget_tweaks %}
 
-<p>ここのページはスレッド</p><br>
+<h2>スレッド一覧</h2>
 
 <form action="{% url 'follow' room.id %}" method="post">
     <button type="submit" name="button">お気に入り追加</button>
@@ -11,7 +11,7 @@
 </form>
 
 {% for thread in threads %}
-<div>
+<div class="container">
     <table>
         <tr>
             <td>{{ thread.username }}</td>

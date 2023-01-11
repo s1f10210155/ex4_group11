@@ -63,7 +63,12 @@ h2{
     margin: 140px 10% 20px 10%;
     border-left: solid 5px #444d56;
     padding-left: 20px;
-    float: left;
+}
+
+h3{
+    margin: 20px 10% 20px 10%;
+    border-left: solid 5px #444d56;
+    padding-left: 20px;
 }
 
 .container {
@@ -74,7 +79,7 @@ h2{
     padding-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 0 8px grey;
-    text-align: center;
+    text-align: -webkit-center;
 }
 
 /*float: right;

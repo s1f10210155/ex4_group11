@@ -67,6 +67,7 @@ h2{
     margin: 140px 10% 20px 10%;
     border-left: solid 5px #444d56;
     padding-left: 20px;
+    float: left;
 }
 
 .container {
@@ -77,4 +78,24 @@ h2{
     padding-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 0 8px grey;
+}
+
+form{
+    float: right;
+    margin-top: 140px;
+    margin-right: 50px;
+}
+
+.result{
+    background-color: #ffe7d4;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 3px;
+    font-weight: 300;
+    float: right;
+    margin-right: 3%;
+}
+
+li{
+    list-style: none;
 }

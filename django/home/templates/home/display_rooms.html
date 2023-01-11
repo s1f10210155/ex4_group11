@@ -2,29 +2,29 @@
 
 {% block pub_thread %}
 {% load widget_tweaks %}
-<p>ここのページはルーム</p><br>
+<!--<p>ここのページはルーム</p><br>-->
 {% for room in rooms %}
-<div>
+<div class="container">
     <table>
         <tr>
             <td>{{ room.username }}</td>
             <td>{{ room.created_datetime }}</td>
         </tr>
         <tr>
-            <td colspan="2">{{ room.title }}</td>
+            <td colspan="2">タイトル：{{ room.title }}</td>
         </tr>
         <tr>
-            <td colspan="2">{{ room.content | linebreaks | urlize }}</td>
+            <td colspan="2">コメント{{ room.content | linebreaks | urlize }}</td>
         </tr>
         <tr>
-            <td colspan="2"><a href="{% url 'display_threads' room.id %}">read more</a></td>
+            <td colspan="2"><a href="{% url 'display_threads' room.id %}" id="result">read more</a></td>
         </tr>
     </table>
 </div>
 {% endfor %}
 
 
-<div>
+<div style="text-align: center;">
 
     {% if rooms.has_previous %}
         <a href="?current_page={{ rooms.previous_page_number }}">Previous</a>

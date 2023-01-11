@@ -8,9 +8,9 @@
     <div class="container">
     <ul>
         <li>
-            {{ room.title }}
-            {{ room.content }}
-            <a href="{% url 'display_threads' room.id %}">read more</a>
+            タイトル:{{ room.title }}<br>
+            コメント:{{ room.content }}
+            <a href="{% url 'display_threads' room.id %}" class="result">read more</a>
         </li>
     </ul>
     </div>

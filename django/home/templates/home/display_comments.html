@@ -1,30 +1,31 @@
 {% extends 'home/pub_home.html' %}
 {% block pub_thread %}
 {% load widget_tweaks %}
-<p>ここのページはコメント</p><br>
+<h2>スレッド</h2>
 <a href="{{request.META.HTTP_REFERER}}">戻る</a>
 <!--コメントした後に戻るボタンを押すと機能しないバグあり-->
 
-<table>
+<table class="container">
     <tr>
-        <td>{{ thread.username }}</td>
-        <td>{{ thread.created_datetime }}</td>
+        <td>ユーザー名：{{ thread.username }}</td>
+        <td>日付：{{ thread.created_datetime }}</td>
     </tr>
     <tr>
-        <td colspan="2">{{ thread.title }}</td>
+        <td colspan="2">タイトル：{{ thread.title }}</td>
     </tr>
     <tr>
-        <td colspan="2">{{ thread.content | linebreaks | urlize }}</td>
+        <td colspan="2">コメント{{ thread.content | linebreaks | urlize }}</td>
     </tr>
 </table>
+<h3>コメント一覧</h3>
 {% for comment in comments %}
-<table>
+<table class="container">
     <tr>
-        <td>{{ comment.username }}</td>
-        <td>{{ comment.created_datetime }}</td>
+        <td>ユーザー名：{{ comment.username }}</td>
+        <td>日付：{{ comment.created_datetime }}</td>
     </tr>
     <tr>
-        <td colspan="2">{{ comment.comment | linebreaks | urlize }}</td>
+        <td colspan="2">コメント{{ comment.comment | linebreaks | urlize }}</td>
     </tr>
 </table>
 {% endfor %}
@@ -33,10 +34,10 @@
     <input type="hidden" value="{{ thread.id }}" name="thread_id">
     <table>
         <tr>
-            <td>{{ user.username }}</td>
+            <td>ユーザー名：{{ user.username }}</td>
         </tr>
         <tr>
-            <td>{{ form.comment | add_class:"form_content" }}</td>
+            <td>コメント{{ form.comment | add_class:"form_content" }}</td>
         </tr>
         <tr>
             <td><button type="submit" class="positive_button">create</button></td>
