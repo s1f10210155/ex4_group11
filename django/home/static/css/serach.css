@@ -1,0 +1,50 @@
+header {
+    left: 0px;
+    display: inline-block;
+    width: 100%;
+    border-top: 7px solid orange;
+    box-shadow: 0 0 8px grey;
+    position: fixed;
+    top: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    z-index: 500;
+}
+
+.ul-header{ 
+    display:flex;
+    align-content: center;
+    list-style: none;
+    justify-content: space-around;
+    margin: revert;
+    font-size: 122%;
+    font-weight: 700;
+}
+
+.ul1:hover{
+    background-color: orange;
+    border-radius: 20px;
+    transition-property: background-color;
+    transition-duration: 0.8s;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+h1{
+    text-align: center;
+}
+
+/*main{
+    background-color: #ffe6b4;
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    border-top: 7px solid orange;
+    box-shadow: 0 0 8px grey;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}*/
