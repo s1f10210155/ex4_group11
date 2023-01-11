@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Thread, Comment, Room, CustomUser
-from .forms import ThreadForm, CommentForm, RoomForm
+from .forms import ThreadForm, CommentForm, RoomForm, UserForm
 #from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -155,3 +155,20 @@ def followRoom(request, room_id):
     place = get_object_or_404(Room, pk=room_id)
     request.user.favorite_room.add(place)
     return redirect('pub_home')
+
+def create_user(request):
+    if request.method == 'GET':
+        form = UserForm
+    elif request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            get_user_model().objects.create_user(
+                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password']
+            )
+        return redirect("pub_home")
+    context = {
+        'form': form
+    }
+    return render(request, "home/create_user.html", context)

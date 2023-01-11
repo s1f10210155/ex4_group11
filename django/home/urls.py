@@ -18,5 +18,7 @@ urlpatterns = [
 
     path("search/", views.search, name="search"),
 
-    path('follow/<int:room_id>/', views.followRoom, name='follow'),  
+    path('follow/<int:room_id>/', views.followRoom, name='follow'), 
+
+    path("create_user/", views.create_user, name="create_user"), 
 ]

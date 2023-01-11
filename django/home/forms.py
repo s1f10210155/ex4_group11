@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Thread, Comment, Room
+from .models import Thread, Comment, Room, CustomUser
 
 class RoomForm(ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ("comment",)
+
+class UserForm(ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ("username", "email", "password",)
