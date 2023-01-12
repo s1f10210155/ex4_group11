@@ -1,10 +1,11 @@
 {% extends 'home/pub_home.html' %}
 {% block pub_thread %}
 {% load widget_tweaks %}
-<h2>スレッド</h2>
-<a href="{{request.META.HTTP_REFERER}}">戻る</a>
-<!--コメントした後に戻るボタンを押すと機能しないバグあり-->
-
+<div id="a">
+    <h2 id="com_h2">スレッド</h2>
+    <a href="{{request.META.HTTP_REFERER}}" id="com_a">戻る</a>
+    <!--コメントした後に戻るボタンを押すと機能しないバグあり-->
+</div>
 <table class="container">
     <tr>
         <td>ユーザー名：{{ thread.username }}</td>
@@ -29,7 +30,8 @@
     </tr>
 </table>
 {% endfor %}
-
+<h3>新規コメント作成</h3>
+<div class="container">
 <form method="post" action="{% url 'create_comment' %}">{% csrf_token %}
     <input type="hidden" value="{{ thread.id }}" name="thread_id">
     <table>
@@ -37,11 +39,12 @@
             <td>ユーザー名：{{ user.username }}</td>
         </tr>
         <tr>
-            <td>コメント{{ form.comment | add_class:"form_content" }}</td>
+            <td>コメント<br>{{ form.comment | add_class:"form_content" }}</td>
         </tr>
         <tr>
             <td><button type="submit" class="positive_button">create</button></td>
         </tr>
     </table>
 </form>
+</div>
 {% endblock %}

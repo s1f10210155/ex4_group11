@@ -97,3 +97,27 @@ h2{
 #space{
     margin: 4%;
 }
+
+h3{
+    margin: 2% 10% 20px 10%;
+    border-left: solid 5px #444d56;
+    padding-left: 20px;
+}
+
+#a{
+    display: flex;
+}
+
+#com_h2{
+    margin: 0px 5% 20px 10%;
+}
+
+#com_a{
+    margin-top: 5px;
+    margin-bottom: 18px;
+    background-color: #d8d8d8;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 3px;
+    font-weight: 300;
+}

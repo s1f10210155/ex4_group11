@@ -44,10 +44,11 @@
     {% endif %}
 </div>
 <br>
+<h3>新規スレッド作成</h3>
 <div id="new_thre">
     <form method="post" action="{% url 'create_thread' %}" class="container">{% csrf_token %}
             <input type="hidden" value="{{ room.id }}" name="room_id">
-            <h3>新規スレッド作成</h3>
+            
             <table>
                 <tr>
                     <td>{{ user.username }}</td>
