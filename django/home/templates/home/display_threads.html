@@ -3,13 +3,14 @@
 {% block pub_thread %}
 {% load widget_tweaks %}
 
-<h2>スレッド一覧</h2>
+<h2 id="thre_h2">スレッド一覧</h2>
 
-<form action="{% url 'follow' room.id %}" method="post">
+<form action="{% url 'follow' room.id %}" method="post" id="thre_form">
     <button type="submit" name="button">お気に入り追加</button>
     {% csrf_token %}
 </form>
-
+<br>
+<div id="space"></div>
 {% for thread in threads %}
 <div class="container">
     <table>
@@ -18,40 +19,18 @@
             <td>{{ thread.created_datetime }}</td>
         </tr>
         <tr>
-            <td colspan="2">{{ thread.title }}</td>
+            <td colspan="2">タイトル：{{ thread.title }}</td>
         </tr>
         <tr>
-            <td colspan="2">{{ thread.content | linebreaks | urlize }}</td>
+            <td colspan="2">コメント{{ thread.content | linebreaks | urlize }}</td>
         </tr>
         <tr>
-            <td colspan="2"><a href="{% url 'display_comments' thread.id %}">read more</a></td>
+            <td colspan="2"><a href="{% url 'display_comments' thread.id %}" id="result">read more</a></td>
         </tr>
     </table>
 </div>
 {% endfor %}
-
-<form method="post" action="{% url 'create_thread' %}">{% csrf_token %}
-        <input type="hidden" value="{{ room.id }}" name="room_id">
-
-        <table>
-            <tr>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.title }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.content }}</td>
-            </tr>
-            <tr>
-                <td><button type="submit" class="positive_button">create</button></td>
-            </tr>
-        </table>
-
-</form>
-
-<div>
-
+<div style="text-align: center;">
     {% if threads.has_previous %}
         <a href="?current_page={{ threads.previous_page_number }}">Previous</a>
     {% endif %}_
@@ -63,5 +42,26 @@
     {% if threads.has_next %}
         <a href="?current_page={{ threads.next_page_number }}">Next</a>
     {% endif %}
+</div>
+<br>
+<div id="new_thre">
+    <form method="post" action="{% url 'create_thread' %}" class="container">{% csrf_token %}
+            <input type="hidden" value="{{ room.id }}" name="room_id">
+            <h3>新規スレッド作成</h3>
+            <table>
+                <tr>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <td>タイトル：{{ form.title }}</td>
+                </tr>
+                <tr>
+                    <td>コメント<br>{{ form.content }}</td>
+                </tr>
+                <tr>
+                    <td><button type="submit" class="positive_button">create</button></td>
+                </tr>
+            </table>
+    </form>
 </div>
 {% endblock %}

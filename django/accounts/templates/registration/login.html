@@ -8,16 +8,20 @@
   </head>
 
   <body>
-    <h1>Login</h1>
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Login" />
-    </form>
-
-    <p><a href="{% url 'pub_home' %}">Public Home</a></p>
+    <main>
+      <h1>Login</h1>
+      {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login" />
+      </form>
+      <ul>
+        <a href="{% url 'pub_home' %}">Topに戻る</a>
+        <a href="{% url 'create_user' %}">新規登録</a>
+      </ul>
+    </main>
   </body>
 </html>
