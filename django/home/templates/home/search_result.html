@@ -8,8 +8,8 @@
     <div class="container">
     <ul>
         <li>
-            タイトル:{{ room.title }}<br>
-            コメント:{{ room.content }}
+            title:{{ room.title }}<br>
+            comment:{{ room.content }}
             <a href="{% url 'display_threads' room.id %}" class="result">read more</a>
         </li>
     </ul>

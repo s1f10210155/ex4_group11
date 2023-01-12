@@ -3,10 +3,10 @@
 {% block pub_thread %}
 {% load widget_tweaks %}
 
-<h2 id="thre_h2">スレッド一覧</h2>
+<h2 id="thre_h2">Threads</h2>
 
 <form action="{% url 'follow' room.id %}" method="post" id="thre_form">
-    <button type="submit" name="button">お気に入り追加</button>
+    <button type="submit" name="button">like</button>
     {% csrf_token %}
 </form>
 <br>
@@ -19,10 +19,10 @@
             <td>{{ thread.created_datetime }}</td>
         </tr>
         <tr>
-            <td colspan="2">タイトル：{{ thread.title }}</td>
+            <td colspan="2">title:{{ thread.title }}</td>
         </tr>
         <tr>
-            <td colspan="2">コメント{{ thread.content | linebreaks | urlize }}</td>
+            <td colspan="2">comment{{ thread.content | linebreaks | urlize }}</td>
         </tr>
         <tr>
             <td colspan="2"><a href="{% url 'display_comments' thread.id %}" id="result">read more</a></td>
@@ -44,7 +44,7 @@
     {% endif %}
 </div>
 <br>
-<h3>新規スレッド作成</h3>
+<h3>New thread create</h3>
 <div id="new_thre">
     <form method="post" action="{% url 'create_thread' %}" class="container">{% csrf_token %}
             <input type="hidden" value="{{ room.id }}" name="room_id">
@@ -54,10 +54,10 @@
                     <td>{{ user.username }}</td>
                 </tr>
                 <tr>
-                    <td>タイトル：{{ form.title }}</td>
+                    <td>title:{{ form.title }}</td>
                 </tr>
                 <tr>
-                    <td>コメント<br>{{ form.content }}</td>
+                    <td>comment<br>{{ form.content }}</td>
                 </tr>
                 <tr>
                     <td><button type="submit" class="positive_button">create</button></td>

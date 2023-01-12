@@ -23,18 +23,18 @@
             </ul>
         </header>
         <main>
-            <h2>ルーム作成</h2>
+            <h2>Room creation</h2>
             <form method="post" action="{% url 'create_room' %}">{% csrf_token %}
                 <div class="container">
                     <table>
                         <tr>
-                            <td>ユーザー名：{{ user.username }}</td>
+                            <td>name:{{ user.username }}</td>
                         </tr>
                         <tr>
-                            <td>タイトル：{{ form.title }}</td>
+                            <td>title:{{ form.title }}</td>
                         </tr>
                         <tr>
-                            <td>本文<br>{{ form.content }}</td>
+                            <td>content<br>{{ form.content }}</td>
                         </tr>
                         <tr>
                             <td style="text-align: center;"><button type="submit" class="positive_button">create</button></td>

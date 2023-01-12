@@ -11,10 +11,10 @@
             <td>{{ room.created_datetime }}</td>
         </tr>
         <tr>
-            <td colspan="2">タイトル：{{ room.title }}</td>
+            <td colspan="2">title:{{ room.title }}</td>
         </tr>
         <tr>
-            <td colspan="2">コメント{{ room.content | linebreaks | urlize }}</td>
+            <td colspan="2">comment{{ room.content | linebreaks | urlize }}</td>
         </tr>
         <tr>
             <td colspan="2"><a href="{% url 'display_threads' room.id %}" id="result">read more</a></td>

@@ -10,18 +10,18 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <div>
-                <h1>アカウント登録</h1>
+                <h1>Sign up</h1>
                 <dl>
                     <div>
-                        <dt class="space">アカウント名</dt>
+                        <dt class="space">account name</dt>
                         <dt class="space">{{ form.username }}{{ forms.username.errors }}</dt>
                     </div>
                     <div>
-                        <dt class="space">メールアドレス</dt>
+                        <dt class="space">email address</dt>
                         <dt class="space">{{ form.email }}{{ form.email.erors }}</dt>
                     </div>
                     <div>
-                        <dt class="space">パスワード</dt>
+                        <dt class="space">password</dt>
                         <dt class="space">{{ form.password }}{{ form.password.errors }}</dt>
                     </div>
                     <!--
@@ -31,11 +31,11 @@
                     </div>
                     -->
                     <div id="space">
-                        <button type="submit"><i class="fa fa-plus" style="color:#fff;"></i> アカウントを登録する</button>
+                        <button type="submit"><i class="fa fa-plus" style="color:#fff;"></i>submit</button>
                     </div>
                 </dl>
                 <div id="top">
-                    <a href="{% url 'pub_home' %}">Topに戻る</a>
+                    <a href="{% url 'pub_home' %}">Top</a>
                 </div>
                 </div>
             </form>
